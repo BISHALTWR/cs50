@@ -1,0 +1,34 @@
+python has while loop:
+    while (condition):
+        # indented block of code here
+        # don't forget to update to avoid infinite loop
+        # while True: can be useful if you wan't user to do something necessarily
+
+python consists data type list:
+    # [1,2,3] is a list
+    # You can use list_name[index] to display item in index position (First is 0 index)
+    # you can use len(list_name) function which returns length of list
+    # .sort() method sorts and returns None. It modifies the original list
+    # sorted() function sorts and returns a new list
+
+python has for loop:
+    # for loop iterates through a list
+        e.g. for i in [0, 1, 2]:
+                # indented block of code here
+                # value of i will be 0, then 1, then 2 and loop will stop
+    # You can use function range(value) which is equivalent to providing list from 0 to value
+        e.g. for i in range(5):
+    # You can do print("meow\n" * 3, end="")
+
+python also has dictionary:
+    # students = {
+        "key":"value"
+        "key":"value"                        
+    }
+    # You can access value using key like students[key] will return the value
+    # For loop iterates over keys only in dictionary
+    # You can create list of dictionary
+    # list(dictionary_name) returns a list of all the keys in dictionary
+    # There is no predefined function to sort a dictionary
+        # Extract list of keys, sort it and use it to change list.
+    # .pop(key) pops the key:value pair and returns the value

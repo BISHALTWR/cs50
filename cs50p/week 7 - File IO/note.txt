@@ -1,0 +1,35 @@
+File Input Output allows you to store data in file so you can use it later
+    # open lets you open file
+        # file1 = open("file_name.ext", "mode")
+            # mode can be:
+                w for write(which recreates it, overwriting old one)
+                a for append(which doesn't remove old data)
+                r for read mode
+    # file1.write(value) to write data to file
+    # file1.close() to close the file
+    # with closes the file for you:
+        with open("filename.ext","mode") as file1:
+            indented block of code,
+            file is closed after execution of this block of code
+    # lines = file1.readlines() lets you get all lines of file1 as list
+    # Using strip() is helpful most of the time
+    # OR, you could use for line in file:
+
+CSV (Comma Separated Values are great for storing multiple pieces of information)
+    # Eg:
+        Bishal, 23
+        Biraj, 17
+        Appu, 22
+    # This has one column of names and one column of age
+
+    # lambda function can be used for one time use function(i.e. only at one place in code)
+        # lambda student: student["name"]
+
+There is a module called csv:
+    # it has .DictReader() that reads as dictionary and .reader() that reads as list
+    # .DictWriter(file) and .writer()
+    # next(csv_reader_object) returns next row in csv file (Super useful for heading)
+
+There is tabulate library to tabulate csv file
+
+PIL library for images

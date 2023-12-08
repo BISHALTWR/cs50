@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooter</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+<body>
+    <div id="gameArea">
+        <canvas id="playGround" width="640" height="480"></canvas>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script src="LAB.min.js"></script>
+    <script>
+        $LAB.script('input.js')
+            .script('cannon_ball.js')
+            .script('Game.js').wait(function() {
+                Game.start(640,480);
+            });
+    </script>
+
+</body>
+</html>

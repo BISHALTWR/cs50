@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooter</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+<body>
+    <div id="gameArea">
+        <canvas id="myCanvas" width="720" height="540">Your browser doesn't support canvas tag</canvas>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script src="LAB.min.js"></script>
+    <script>
+        $LAB.script('Game.js').wait(function() {
+                Game.start(1440,1080);
+            });
+    </script>
+
+</body>
+</html>

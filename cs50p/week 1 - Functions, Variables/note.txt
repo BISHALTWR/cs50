@@ -1,0 +1,66 @@
+# docs.python.org
+# python in terminal opens python in interactive mode
+
+Bug is a mistake in your program.
+Function takes some values, does something and then gives certain result.
+	Input values taken by function are arguments. Some functions can take multiple arguments.
+	Result provided is return value.
+
+print() takes variable or value as argument and display it in screen. It can take multiple arguments.
+    # You can use + to concatenate multiple values or ',' to provide multiple arguments(space is automatically added at the place of ',')
+    # It adds a newline at the end of print()
+    # You can overwrite that using 
+    # Syntax: print(*objects, sep=' ', end='\n', file = sys.stdout, flush=False);
+        # *objects => any number of objects
+        # sep=' ' => arguments are separated by space (by default)
+        # end='\n' => every line is terminated by newline. (by default)
+
+input() takes value or variable as argument and return user-input.
+	i.e. value = input("Give value: ")
+
+# this is a comment (Just select the part and press Ctrl + '/')
+
+Comment can be used for pseudo-code(to-do list), note for future etc.
+
+
+Parameters : positional varibales based on their position. (like values given to print, first thing passed gets printed first)
+            Also there are named parameters(like end, sep passed in print that don't work based on position)
+
+'\' is used for escaping characters in your code.
+
+python uses str for string.
+    # strip() method removes whitespace from str and returns it.
+        # to use strip() method on a string "name". name = name.strip()
+        # You can use lstrip() or rstrip() as well for leftstrip and rightstrip
+        # You can pass string as argument to these methods as well
+    # capitalize() method capitalizes first word of string.
+    # title() method capitalizes every word.
+    # split() can be used to split a string and returns multiple strings
+        # argument is the character used to split
+        # Eg: first, last = name.split(" ") 
+
+python uses int for integer.
+    # Input will be treated as string by default
+    # int() will convert string to integer as long as the string is number
+    # You have +,-,*,/,%(mod), **(power)
+    # Also you have pow(number, index) function for numbers
+
+python has float for real number.
+    # round() takes input as number and rounds it off.
+        # round(number[, ndigits])
+        # If you don't specify number of digits, it is rounded off to nearest integer
+        # print(f"{z:,}") This just means comma is used as separator. (After every third digit from last)
+        # print(f"${amount:,.4f}") means use comma as separator and display value upto 4 decimal only
+
+You can use def keyword to define a function.
+    # def function_name(arguments):
+        # Everthing here (indented) is part of the function
+        # You can provide default values of arguments using assignment(=) operator
+        # You need to define a function before you use it
+        # Good option is to create a main() function with the "main" part of code and then call it at end of the code.
+    # Scope refers to section to code where the varible can be used.
+        # Scope of a varible is function where it is defined.
+    # return statement can be used to return a value.
+
+# You can use formatting string:
+    formatted = "{:.3f}".format(value) to show 3 decimal places all the time

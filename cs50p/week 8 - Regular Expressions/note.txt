@@ -1,0 +1,55 @@
+Regular Expressions are patterns: (RegEx)
+
+https://regexr.com
+https://regex101.com
+https://pypi.org/project/validator-collection/
+https://python-validators.github.io/validators/
+
+re library helps you work with regular expressions:
+    # re.search(pattern, string, flags=0)
+        # Symbols for pattern
+            . (any character excet a new line)
+            * (0 or more repetitions)
+            + (1 or more repetitions) i.e. @+ will mean one or more of @
+            ? (0 or 1 repetition)  i.e. to make it optional
+            {m} (m repetitions)
+            {m, n} (m-n repetitions)
+            You can add any character in between to make sure string contains it
+            To use one of the character above, use \ and use r to indicate raw string 
+            So, ".*@.*" will mean string with @ with something/nothing to the right and something/nothing to the left
+                ".+@.+" will mean string with @ with something to the right and something to the left
+                        this can be done with "..*@..*" also 
+                ".+@.+.edu" will accept anything with something@something(atleast 2 char)edu 
+                r".+@.+\.edu" will accept anything with something@something.edu
+            ^ to match start of the string
+            $ to match end of the string or just before the newline at the end of the string
+            So, r"^.+@.+\.edu$" to match the exact string
+            [] for specifying set of characters
+            [^] for complementing the set
+            So, r"^[^@]+@[^@]+\.edu"
+            You can provide range of values too.
+            So, r"^[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.eu$" can be used too
+                [a-zA-Z0-9_] can be replaced with \w for word characters
+            \d for decimal digit
+            \D not a decimal digit
+            \s whitespace characters
+            \S not a whitespace character
+            \w word character as well as numbers and underscore
+            \W not a word chracter
+            A|B either A or b
+            (...) a group
+            (?:...) non-capturing version
+        # flags are configuration options
+            re.IGNORECASE
+            re.MULTILINE
+            re.DOTALL
+            So, re.search(r"^\w+@\w+\.edu$", email, re.IGNORECASE) will ignore case
+    # Also re.match, re.fullmatch exist
+    # You can also use re.search to find and return that
+        matches = re.search(r"^(.+), ?(.+)$", name) to find and return name in that format
+            matches.group(1) will have first return value and matches.group(2) has second one
+
+Cleaning user input using re:
+    # You can surely use .replace() and .removeprefix() on string but re is more robust
+    # re.sub(pattern, repl, string, count = 0, flags = 0)
+    # re.findall() also exists

@@ -1,0 +1,14 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+html {
+    background-color: whitesmoke;
+}
+
+#gameArea {
+    height:480px;
+    width: 640px;
+    margin: 10vh auto;
+    background-color: gray;
+}

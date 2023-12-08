@@ -1,0 +1,15 @@
+Speller.c => A program that's designed to spell-check a file loading dictionary of words from disk
+dictionary.c => dictionary
+
+In dictionary.c:
+node represents a node in a hash table
+table[N] is a pointers to table of nodes in hash table. N = 26 here for number of alphabets.
+
+bool check(const char *word) returns true or false
+	-based on whether the word (char * or string) is in dictionary or not. ( To be implemented)
+
+unsigned int hash(const char *word); 
+bool load(const char *dictionary); const means you can't change those within the function
+
+
+

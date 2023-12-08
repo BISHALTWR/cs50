@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "week 6 - Unit Tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

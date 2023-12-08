@@ -1,0 +1,51 @@
+Modules allow you to factor out a code and reuse it later.
+
+import module_name to import a module
+
+import function_name from module_name imports specific function
+
+pypi.org for packages
+
+Python has following modules:
+    # random
+        # random.choice(["head", "tail"]) returns one of the values
+        # random.randint(a, b) generates random int between a and b inclusive
+        # random.shuffle(list_name) suffles the list (doesn't return but changes list itself)
+    # statistics
+        # statistics.mean([100,90]) calculates mean
+    # sys module
+        # sys.argv is list that contains words used to run the program
+        # sys.exit(message) displays the message and exits the program (Error handling)
+    # cowsay
+        # Install using "pip install cowsay" in terminal
+        # cowsay.cow(string) to display as cowtalk
+        # cowsay.trex(string)
+    # request
+        # use "pip intall request"
+        # can be used to request data from server APIs
+    # json
+        # comes with python, no need to install
+        # can work with JSON files
+        # print(json.dumps(response.json(), indent=2))
+
+Python have APIs:
+    # API (Application Programming Interface)
+        
+Creating your own module:
+    # Create function in a .py file
+    # be sure to add things below, if there is executable block of code in the file
+        # if __name__ = "__main__":
+            # main()
+You can provide command line argument when running the program
+
+Styling your code:
+    # PEP 8 (set of proposals)
+        # Consistency is important
+            # Indentation - 4 spaces
+            # Maximum Line length
+            # Blank lines
+            # imports
+    # pylint 
+    # pycodestyle can reformat your code
+    # black can reformat too
+        # To use: pip install black and then black name.py

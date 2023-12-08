@@ -1,0 +1,77 @@
+You can return multiple values from an object:
+    # Using return value1,value2 which is returned as a tuple
+    # tuple is immutable data type : (value1, value2, value3, ...)
+        # You can't change value of individual position
+        # You can reassign value of entire tuple
+        # You can access(read) value of individual position
+    # Using return [value1,value2] which is list and is mutable
+    # You can also return a dictionary which is mutable (using key) and this make accessing lots of return value easier(no need to remember which index is for what)
+
+Class is blueprint for data type:
+    # class class_name:
+        ... block of code
+    # class contains instance variables(attributes) and functions(methods)
+    # Everytime you create a variable of the class data type, it is called object
+        variable_name = class_name()
+    # def __init__(self, arguments): # Called double underscore init OR dunder init method
+        //block of code used to instantiate object
+    # it can be called:
+        object_var = class_name(variable) to instantiate an object
+    # def __str__(self):
+        //return What do display if print(object_var) is done (string)
+    # You can define any function:
+        def function_name(self):
+            //do something with self
+    # Properties are attributes with more defense mechanism (control)
+        # Using @property (decorator)
+            # Getter
+            @property 
+            def house(self):
+                return self._house
+        # @attribute_name.setter above def attribute_name(self, house)
+            E.g:
+                # Setter
+                @house.setter # This prevents funciton from assigning value without going through this function
+                def house(self, house): # This will get called any time .house is accessed
+                if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+                    raise ValueError("Invalid house")
+                self._house = house
+        # In setter and getter function use _ before the instance variable
+        # int(x, base="10"), string, list, dict  are also classes with their own method
+            # type() function can be used to know type
+        # class methods are associated with class and not object themselves
+            Using @classmethod decorator
+            also there are shared class variable
+            Example:
+                import random
+                class Hat:
+                    
+                    houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"] # This is class variable
+
+                    @classmethod
+                    def sort(cls, name): # This is class variable
+                        print(name, "is in", random.choice(cls.houses))
+
+                Hat.sort("Harry")
+        # There are static methods
+        # Inheritance allows one class to inherit stuff from other class
+            # You do this by passing name of class you want to inherit from while defining class:
+                Example:
+                    class Wizard:
+                        def __init__(self, name):
+                            if not name:
+                                raise ValueError("Missing name")
+
+                    class Student(Wizard):
+                        def __init__(self, name, house):
+                                super().__init__(name)
+                                self.house = house
+
+                    class Professor(Wizard):
+                        def __init__(self, name, subject):
+                                super().__init__(name)
+                                self.subject = subject
+
+Operator overloading allows you to create secondary usage of operator so that they can work on different data types:
+    # def __add__(self, other):
+        //code to do the addition

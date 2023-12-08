@@ -1,0 +1,21 @@
+Comparision operators: >, >=, <, <=, ==, !=
+
+if statement for conditional statement:
+    # if(condition):
+        # Block of code indented here
+    # You can use 'or', 'and', 'not' operators to combine conditions
+    # Use fewer conditional statements if possible
+    # it is possible to use : (90<= score <= 100) which is not possible in C or C++
+
+You can create a function that returns boolean value:
+    # You need to use True/False as return value (Title Case)
+
+match-case statement:
+    # Equivalent to switch case statement in other languages
+    # You don't need break statement for each case
+    # for default case use case _:
+    # match name:
+        case value1:
+            block of code indented
+        case value2|value3|value4: # You can combine multiple cases like this
+            block of code

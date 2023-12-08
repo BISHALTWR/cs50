@@ -1,0 +1,22 @@
+Exceptions => Problems in your code
+
+SyntaxError : Error you made when typing the code (like missing closing bracket)
+ValueError: You are doing stuff with not supported data type (using methods for integers on string)
+EOFError: When user presses Ctrl+D to end the input
+LogicalError: Error in logic of algorithm/program
+
+Error Handling in python:
+    # try:
+        indented block of code
+    # except ValueError: # To handle ValueError
+        indented block of code
+    # else:
+        This indented block of code will run if there is no error
+
+Debugging:
+    # print
+    # rubber duck debugger. (talk to someone, even if it's non-living)
+    # Vs code has a debugger.
+        # breakpoints allow you to execute your code stopping at the position of breakpoints
+        # you get control bar with play, step over(run but don't go inside), step into, ...
+        # Also you get variables with their value in side panel when they are created and their value is changing

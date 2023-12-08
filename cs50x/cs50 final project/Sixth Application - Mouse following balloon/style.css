@@ -1,0 +1,17 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#gameArea {
+    /* box-sizing: border-box; */
+     /*really amazing*/
+    border: 2px solid black;
+    width: 640px;
+    height: 480px;
+    margin:0px 0px;
+}
+
+canvas {
+    padding:0px;
+}

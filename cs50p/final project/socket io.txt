@@ -1,0 +1,15 @@
+https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+https://socket.io/docs/v4/
+
+Web socket establishes two way connection between client and server.
+    -Alternative to polling (frequently asking server for data)
+
+Handshake:
+    Client sends http request to the server to open a connection
+    If the server agrees, it will send a 101 switching protocols response
+    handshake complete.
+    TCP/IP connection is left open, allowing bidirectional message to pass between them with low latency.
+
+Full-duplex connection
+
+https://socket.io/docs/v4/tutorial/introduction

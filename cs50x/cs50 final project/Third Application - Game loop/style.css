@@ -1,0 +1,12 @@
+* {
+    margin:0px;
+    /* background-color: blueviolet; */
+}
+#gameArea {
+    width:fit-content;
+    height:fit-content;
+    margin:10vh auto;
+}
+#gameloopy {
+    height: 80vh;
+}

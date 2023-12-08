@@ -1,0 +1,66 @@
+
+## Working with terminal 
+
+code hello.py 
+    # will create hello.py and open the file
+python hello.py
+    # will run hello.py
+
+Other commands ls(to list), cp original copy_name(to copy),
+    mv original_name new_name(to rename or move),
+    rm file_name(to remove),
+    mkdir folder_name(to create directory/folder),
+    cd (to change directory/folder),
+    rmdir folder_name(to remove directory),
+    clear (to clear terminal)
+
+.. represents parent directory
+    e.g. move hello.py .. (will move the folder to parent directory)
+
+You can use up/down arrow to go to command history. You can use TAB button for auto complete.
+Alt+shift+up or down copies the line
+Alt+up/down moves the line
+Ctrl+shift+k deletes a line
+
+
+In python you can do a,b = b,a to swap values
+x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+    list = [[a,b,c] for a in range(x+1) for b in range(y+1) for c in range(z+1) if a+b+c != n] 
+    print(list)
+
+# Python code to sort the tuples using second element 
+# of sublist Inplace way to sort using sort()
+def Sort(sub_li):
+ 
+    # reverse = None (Sorts in Ascending order)
+    # key is set to sort using second element of 
+    # sublist lambda has been used
+    sub_li.sort(key = lambda x: x[1])
+    return sub_li
+ 
+# Input list 
+sub_li =[['rishav', 10], ['akash', 5], ['ram', 20], ['gaurav', 15]]
+ 
+# Printing the sub list
+print(Sort(sub_li))
+
+print(f"{average:.2f}")
+
+def split_and_join(line):
+    # write your code here
+    list = line.split(" ")
+    return "-".join(list)
+
+def count_substring(string, sub_string):
+    count = 0
+    for i in range(0, len(string)-len(sub_string)+1):
+        # print(string[i:i+len(sub_string)])
+        if string[i: i + len(sub_string)] == sub_string:
+            count += 1
+    return count
+
+one day or day one

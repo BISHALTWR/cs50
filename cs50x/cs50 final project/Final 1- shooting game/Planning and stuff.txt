@@ -1,0 +1,65 @@
+What I need to do:
+1) Start by making folders to arrange file. 
+2) inside input folder create keyboard.js, mouse.js 
+3) inside game objects folder create ball.js, balloon.js, cannon.js and ThreeColorGameObject.js
+    //Here, ThreeColorGameObject class will act as parent class whose property will be inherited by ball.js, balloon.js and cannon.js
+4) inside reference create color.js and keys.js
+5) Other objects Canvas2D.js, Game.js, PainterGameWorld.js for asset loading, gameloop, canvas initialization, and initializing gameloop and such
+6) New data structure Vector.js defines object with x and y component and methods that let you work. Vector can be used to represent position, origin, velocity and such.
+7) index.html just contains div with canvas element and uses LAB.js to load the js files.
+8) game-layout.css for making it look better. Complete this at last. Try to make page responsive.
+
+Step 1-8 done.
+
+9) Complete color.js and keys.js - Just copy
+10) Complete Keyboard.js
+    //create the object
+    //create function to handle keyDown
+    //create function to handle keyUp
+11) Complete Mouse.js
+    //create the object
+    //create function to handle MouseMove
+    //create function to handle MouseClick
+12) Complete Game.js
+    //start method to initialize canvas2D, call loadAssets(), call assetLoadingLoop()
+    //loadAssets method
+    //loadSprite method with imageSrc parameter
+    //Keep track of sprites being loaded using spritesStillLoading variable which is incremented by loadSprite method
+    //in assetLoadingLoop, add event listener funciton for image.onload to decrement count of sprites being loaded //nope do this in loadSprite method
+    //mainLoop should be called after all sprites loaded.
+    //In mainloop, you call gameWorld.handleInput, gameWorld.update, clear canvas, gameWorld.draw(), reset mouse and call mainLoop again
+13) Complete Canvas2D.js
+    //initialize method to initialize canvas and canvasContext(using canvas.getContext('2d'))
+    //clear method to clear the canvas using clearRect method
+    //drawImage method with parameter sprite, position, rotation, scale, origin
+        //use save(), tranaslate(), rotate(), drawImage() and restore()
+    //drawText to be able to draw text //do this at last
+14) Complete Vector.js
+    //define with x and y value. if parameters undefined, assign 0
+    //create addTo, multiply(scalar), 
+
+Step 9-13 done (except drawText)
+
+Steps 9-13 are almost same for every game
+
+Now, for the different part unique to the particular game
+14) Complete shooterGameWorld.js
+    //initialize method that calls gameobject initializer
+    //handleInput method that calls event handler for mouse and keyboard
+    //update method that calls draw and update method for gameobjects
+
+15) Complete ThreeColorGameObject class
+    //should contain position, velocity, color properties i guess
+    //should contain initialize method, draw and update method maybe
+
+16) Use inheritance to complete ball, balloon, cannon classes
+
+Steps 14-16 done
+How the game should work:
+
+
+//Re-evaluate extraSpeed part.
+//Make three Game modes easy(1 enemy), medium(2 enemy), hard(3 enemy)
+//Make a home screen
+//Use file handling for high score
+//Change gameover screen, background, lives(bar).
