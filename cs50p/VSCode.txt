@@ -14,6 +14,8 @@ Other commands ls(to list), cp original copy_name(to copy),
     rmdir folder_name(to remove directory),
     clear (to clear terminal)
 
+Ctrl + L clears the terminal
+
 .. represents parent directory
     e.g. move hello.py .. (will move the folder to parent directory)
 
