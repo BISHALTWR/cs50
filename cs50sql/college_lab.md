@@ -51,7 +51,7 @@ WHERE job = 'Clerk';
 - Display the record of all clerks working in a department number 20
 ```sql
 SELECT * FROM employee
-WHERE dept_no = 20;
+WHERE job = 'Clerk' AND dept_no = 20;
 ```
 - Find the name, employee number, and job of all the employee who work as manager or analyst
 ```sql

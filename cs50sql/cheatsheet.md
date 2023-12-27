@@ -41,9 +41,9 @@ DISTINCT keyword can be used to ensure that only distinct values are counted.
     - SELECT COUNT(DISTINCT "publisher") FROM "longlist"; -->
 
 
-# SQL Cheatsheet
-
 This document provides a quick reference for common SQL commands.
+
+# SQL Queries
 
 ## SELECT
 
@@ -119,3 +119,124 @@ The `WHERE` keyword lets you select rows based on a condition.
     ```sql
     SELECT COUNT(DISTINCT "publisher") FROM "longlist";
     ```
+
+> Note: While comparing with date use '' (single quote). i.e. treat as string.
+
+<!-- 
+Databases can have multiple tables.
+.tables to view all the tables.
+- These tables have some relationships between them, and hence we call the database a relational database.
+    - Consider a book database
+        - It can have tables like authors, books, publishers, translators
+        - Authors write books
+        - Publishers publish books
+        - Books are translated by translators
+- Why have different tables:
+    - Consider using a single table for books and authors.
+        - where in each row there is book name, book publish date... and author details too
+    - but multiple books can have same authors
+        - so, data is repeated in the table (redundancy)
+    - This can be avoided by creating book table and author table separately.
+    - Now author table doesn't have redundancy and neither does book table
+    - Author info in author table can be referenced by book table.
+    - Also same book can be co-authored
+
+Entity Relationship(ER) diagrams:
+- Relation between tables can be one-to-one, one-to-many and many-to-many.
+- These relations can be shown in entity relationship diagram.
+- The exact relationships between entities are really up to the designer of the database. ER diagram can be thought of as a tool to communicate these decisions with others.
+- We can use keys to relate one table to another in SQL
+
+- Primary keys:
+    - Primary key is unique identifier for each record(row) in a table.
+        - For eg; roll number for student of a class
+    - Foreign keys: foreign key is a primary key taken from different table.
+        - It helps relate tables by forming a link between them.
+
+- Sub-queries:
+    - A subquery is a query inside another query. These are also called nested queries.
+    - SELECT "title"
+    FROM "books"
+    WHERE "publisher_id" = (
+        SELECT "id"
+        FROM "publishers"
+        WHERE "publisher" = 'Fitzcarraldo Editions'
+    );
+    - Notice: subquery is in parentheses. The query that is furthest inside the parentheses will be run first, followed by outer queries.
+    - The inner query is indented for readability.
+
+ -->
+# SQL Relating
+
+## IN
+- This keyword is used to check presence of desired value `IN` given list or set of values.
+
+## JOIN
+- `JOIN` keyword allows us to combine two or more tables together.
+
+### INNER JOIN
+```sql
+-- Consider two tables: 
+    -- sea lions with id and name column
+    -- migrations with id, distance and days
+-- To join the tables:
+SELECT * 
+FROM 'sea_lions'
+JOIN 'migrations' ON 'migrations'.'id' = 'sea_lions'.'id';
+```
+- The `ON` keyword is used to specify which values match between tables being joined. (Required)
+- If there is any IDs in one table not present in the other, this row will not be present in the joined table. This kind of join is called an `INNER JOIN`.
+
+### OUTER JOIN
+
+- These joins allow us to retain certain unmatched ids.
+-  LEFT JOIN, RIGHT JOIN, FULL JOIN
+- `LEFT JOIN` prioritizes the data in the left (or first) table.
+- `RIGHT JOIN` prioritizes the data in the right (or second) table.
+- `FULL JOIN` allows us to see the entirety of all tables.
+-  OUTER JOIN can lead to empty or `NULL` values in the joined table.
+- `NATURAL JOIN` automatically joins two table based on common column name. This doesn't require a `ON` section and works similarly to INNER JOIN.
+
+## SETS
+- On running a query, we get a `result set`.
+- Consider the case with authors and translators in book database. A person could be either an author or a translator. If the two sets intersect, it is also possible that a person could be both an author and a translator.
+- `INTERSECT` finds common between two sets
+```sql
+SELECT 'name' FROM 'translators'
+INTERSECT
+SELECT 'name' FROM 'authors'
+```
+
+- `UNION` combines two sets. Values are not repeated.
+```sql
+SELECT 'name' FROM 'translators'
+UNION
+SELECT 'name' FROM 'authors'
+```
+
+- `EXCEPT` finds difference between two sets.
+```sql
+SELECT 'name' FROM 'authors'
+EXCEPT
+SELECT 'name' FROM 'translators';
+```
+
+## Groups
+-  `GROUP BY` keyword can be used to create groups based on certain attribute.
+```sql
+SELECT 'book_id', AVG('rating') AS 'average rating'
+FROM 'ratings'
+GROUP BY 'book_id';
+```
+- This creates group for each book and them collapse the ratings of the group into an average rating.
+
+```sql
+-- To find book with average rating above 4
+SELECT 'book_id', ROUND(AVG('rating'),2) AS 'average rating'
+FROM 'ratings'
+GROUP BY 'book_id'
+HAVING 'average rating' > 4.0;
+```
+> HAVING IS USED FOR GROUPS, WHERE IS USED FOR INDIVIDUAL ROWS.
+
+
