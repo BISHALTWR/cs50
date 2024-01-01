@@ -58,7 +58,7 @@ WHERE job = 'Clerk' AND dept_no = 20;
 SELECT Emp_name, Emp_no, job FROM employee
 WHERE job = 'Manager' or job = 'Analyst';
 ```
-- Find the records of all employees except those whose job is either president or salesman
+- Find the records of all employees whose job is either president or salesman
 ```sql
 SELECT * FROM employee
 WHERE job = 'President' or job = 'Salesman';
@@ -80,7 +80,8 @@ WHERE Salary NOT BETWEEN 16000 AND 35000;
 ```
 - Find the distinct jobs the employees hold
 ```sql
-SELECT DISTINCT job FROM employee;
+SELECT DISTINCT job AS distinct_jobs
+FROM employee;
 ```
 - Find the name of the employees whose name start with alphabet 'M'
 ```sql
@@ -115,10 +116,10 @@ SELECT Emp_name,Salary*1.1 FROM employee;
 ```sql
 SELECT Emp_name, commission*1.1 FROM employee;
 ```
-- Display the name and total salary (i.e. Salary + commission) of employees in department 30
+- Display the name and total salary (i.e. Salary + commission) of employees in department 20
 ```sql
-SELECT Emp_name, Salary+commission AS 'Name', 'Total Salary' FROM employee
-WHERE dept_no = 30;
+SELECT Emp_name, Salary+commission AS 'Total Salary' FROM employee
+WHERE dept_no = 20;
 ```
 - Display the records of all employees who are either a manager or earns more than 30000
 ```sql
@@ -135,7 +136,8 @@ SELECT COUNT(*) FROM employee;
 ```
 - Find the total number of departments
 ```sql
-SELECT COUNT(DISTINCT dept_no) FROM employee;
+SELECT COUNT(DISTINCT dept_no) AS 'no of department'
+FROM employee;
 ```
 - Find the maximum salary of each department
 ```sql
@@ -150,7 +152,7 @@ WHERE Salary = (SELECT MAX(Salary) FROM employee);
 ```
 - Find the Department number of the Employee who get salary more than the average salary
 ```sql
-SELECT * FROM employee
+SELECT dept_no FROM employee
 WHERE Salary > (SELECT avg(Salary) FROM employee);
 ```
 - Find the Department that has maximum salary greater than 30000
@@ -160,3 +162,7 @@ FROM employee
 GROUP BY dept_no
 HAVING MAX(Salary) > 30000;
 ```
+
+# Lab 2()
+
+- 

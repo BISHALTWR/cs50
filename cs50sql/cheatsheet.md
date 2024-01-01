@@ -62,7 +62,9 @@ The `SELECT` keyword returns values from the database.
 
 ## LIMIT
 
-The `LIMIT` keyword lets you specify the number of rows in the query output.
+The `LIMIT` keyword lets you specify the number of rows in the query output (at end of query).
+> This is also same in PostgreSQL but in SQL Server it is:
+> SELECT TOP(2) id,name FROM employees
 
 ## WHERE
 
@@ -103,7 +105,7 @@ The `WHERE` keyword lets you select rows based on a condition.
 ## Aggregate Functions
 
 - `COUNT()`, `AVG()`, `MIN()`, `MAX()`, `SUM()`
-- `COUNT()` function doesn't count NULL values
+- `COUNT()` function doesn't count NULL values. 
 - Using `MAX` on column with string values will return the last title alphabetically.
 
 ## AS
@@ -239,4 +241,9 @@ HAVING 'average rating' > 4.0;
 ```
 > HAVING IS USED FOR GROUPS, WHERE IS USED FOR INDIVIDUAL ROWS.
 
+
+> CREATE VIEW <name> AS 
+> <Query here>
+> Creates view of database. Which are virtual table that is result of SQL query.
+> You can query a view using from like table
 
