@@ -10,7 +10,7 @@ CREATE TABLE employees(
 	Hiredate date,
 	Sal INT NOT NULL,
 	Comm INT NOT NULL,
-	Dept no INT NOT NULL
+	Dept_no INT NOT NULL
 );
 
 ## Queries
@@ -40,7 +40,7 @@ INSERT INTO employees (EmpID, Name, Phone, Designation, Hiredate, Sal, Comm, Dep
 (1045, 'Sita', NULL, 'Clerk', '1980-07-03', 3500, 700, 20);
 
 INSERT INTO employees (EmpID, Name, Phone, Designation, Hiredate, Sal, Comm, Deptno) VALUES
-(1011, 'Manoj', 440245, 'Sub-accountant', '1989-06-01', 1100, 23, 20);
+(1011, 'Manoj', 440245, 'Sub-account', '1989-06-01', 1100, 23, 20);
 
 INSERT INTO employees (EmpID, Name, Phone, Designation, Hiredate, Sal, Comm, Deptno) VALUES
 (1060, 'Saroj', 552262, 'Manager', '1990-01-01', 2000, 370, 20);
@@ -109,7 +109,7 @@ WHERE EmpID = 1099;
 - Transfer the employee Krish to Department 20 as manager and increment his salary by 1000
 ```sql
 UPDATE employees
-SET Deptno = 20, Sal = Sal + 1000
+SET Deptno = 20, Sal = Sal + 1000, Designation = 'Manager'
 WHERE Name = 'Krish';
 ```
 
@@ -119,9 +119,9 @@ UPDATE employees
 SET Sal = (
     SELECT MIN(Sal)
     FROM employees
-    WHERE Designation = 'Manager' AND Deptno = 20
+    WHERE Designation = 'Manager'
 )
-WHERE Designation = 'Sub-accountant' AND Deptno = 20;
+WHERE Designation = 'Sub-account' AND Deptno = 20;
 ```
 
 - Empty all the records of the table employee
