@@ -26,7 +26,7 @@ CREATE TABLE ACCOUNT (
     ACCOUNT_ID INT PRIMARY KEY,
     FEE FLOAT,
     PAID_MONEY FLOAT,
-    FOREIGN KEY (CRN) REFERENCES STUDENT(CRN)
+    FOREIGN KEY (CRN) REFERENCES STUDENT(CRN) ON DELETE CASCADE
 );
 ```
 - Inserting data
@@ -34,7 +34,7 @@ CREATE TABLE ACCOUNT (
 INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex025', 'Derrick', 'Wilson', '2003-02-03', 24, 'Dharan', 6, 'Jenniferbury', 'BEX', 2078, '9825377615');
 INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex026', 'Jonathan', 'Alexander', '2002-10-15', 21, 'Lalitpur', 10, 'Elizabethville', 'BEX', 2076, '9834540773');
 INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex027', 'Donna', 'Garcia', '1999-11-05', 25, 'Kathmandu', 7, 'South Tammyberg', 'BCE', 2078, '9897213146');
-INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex028', 'Tammy', 'Zavala', '2002-07-24', 22, 'Dharan', 4, 'Lake Christopher', 'BCE', 2078, '9826775950');
+INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex028', 'Tammy', 'Zavala', '2002-07-24', 22, 'KTM', 4, 'Lake Christopher', 'BCE', 2078, '9826775950');
 INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex029', 'Courtney', 'Daniel', '2000-09-05', 24, 'Chitwan', 8, 'East James', 'BCE', 2077, '9840801344');
 INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex030', 'Steven', 'Andersen', '2003-09-02', 24, 'Itahari', 6, 'West Kristine', 'BCE', 2079, '9854000230');
 INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIPALITY, PROGRAM, BATCH, PHONE) VALUES ('kan079bex031', 'Gabriela', 'Harmon', '2001-09-21', 22, 'Chitwan', 10, 'West Donna', 'BCT', 2077, '9835433197');
@@ -84,14 +84,14 @@ INSERT INTO STUDENT (CRN, FNAME, LNAME, DOB, AGE, DISTRICT, WARD_NO, VDC_MUNICIP
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex025', 25, 820000, 196642.56);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex026', 26, 1090000, 101755.71);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex027', 27, 1090000, 844216.2);
-INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex028', 28, 1060000, 349748.19);
+INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex028', 28, 1060000, 20000);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex029', 29, 810000, 318212.39);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex030', 30, 990000, 466901.1);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex031', 31, 930000, 433655.47);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex032', 32, 920000, 721341.44);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex033', 33, 1290000, 625349.87);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex034', 34, 1080000, 834081.81);
-INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex035', 35, 860000, 326336.07);
+INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex035', 35, 860000, 20000);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex036', 36, 990000, 355206.2);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex037', 37, 1000000, 859773.55);
 INSERT INTO ACCOUNT (CRN, ACCOUNT_ID, FEE, PAID_MONEY) VALUES ('kan079bex038', 38, 900000, 527506.65);
@@ -174,8 +174,8 @@ WHERE lname LIKE 'S%';
 - Find FNAME of student who is the youngest of the college
 ```sql
 SELECT FNAME FROM student
-WHERE age IN (
-    SELECT MIN(age) FROM student
+WHERE dob = (
+    SELECT MIN(dob) FROM student
 );
 ```
 
@@ -194,25 +194,24 @@ ORDER BY age ASC, fname DESC;
 ```
 
 - Find the name of the students who live in KTM district and paid money is 20000.
+
 ```sql
 SELECT fname, lname FROM student
-WHERE district = 'KTM' and paid = 20000
-JOIN account on student.crn = account.crn;
+JOIN account on student.crn = account.crn
+WHERE district = 'KTM' and paid_money = 20000;
 ```
 
 - Count the total number of studens in each ward of Lalitpur metropolitan city
 ```sql
-SELECT COUNT(*) FROM student
-GROUP BY ward_no
-WHERE vdc_municipality = 'Lalitpur';
+SELECT ward_no, COUNT(*) FROM student
+WHERE district = 'Lalitpur'
+GROUP BY ward_no;
 ```
 
 - Find the eldest person in each batch
 ```sql
-SELECT * FROM student
-WHERE dob = (
-    SELECT MIN(dob) FROM student
-);
+SELECT MIN(dob) FROM student
+GROUP BY batch;
 ```
 
 - Find the name of students whose age and batch is same as of Rita
@@ -220,11 +219,11 @@ WHERE dob = (
 SELECT FNAME, LNAME FROM student
 WHERE age = (
     SELECT age FROM student
-    WHERE name = 'Rita'
+    WHERE fname = 'Rita'
 ) AND batch = (
     SELECT batch FROM student
-    WHERE name = 'Rita'
-)
+    WHERE fname = 'Rita'
+);
 ```
 
 - Find the program and average age of students in each program that average age greater than 20
@@ -236,8 +235,107 @@ HAVING AVG(age) > 20;
 
 - Display name and account_id of student who live in chitwan district
 ```sql
-SELECT name, account_id FROM student
-WHERE district = 'Chitwan'
-JOIN account ON student.crn = account.crn;
+SELECT (fname||' '||lname) AS name,account_id FROM student
+JOIN account ON student.crn = account.crn
+WHERE district = 'Chitwan';
 ```
 
+- Find the total number of computer students in each batch
+```sql
+SELECT batch, COUNT(*) FROM student
+WHERE PROGRAM = 'BCT'
+GROUP BY batch;
+``` 
+
+- Find the name of students whose age is same as age of Ram
+> name isn't unique key. So lets get 1
+```sql
+SELECT (fname||' '||lname) AS name FROM student
+WHERE age = (
+    SELECT age FROM student
+    WHERE fname = 'Ram'
+)
+```
+
+- Find the name of student who are elder than the some student that live in KTM district.
+> Huh?
+
+- Delete record of students who live in Kathmandu city.
+
+```sql
+DELETE FROM account
+WHERE crn IN (
+    SELECT crn FROM student
+    WHERE district = 'Kathmandu'
+);
+DELETE FROM student
+WHERE district = 'Kathmandu';
+```
+
+- Delete a record of students whose district is same as that of Hari
+
+```sql
+DELETE FROM student
+WHERE district = (
+    SELECT district FROM student
+    WHERE fname = 'Hari'
+);
+```
+
+- Change the batch 2066 to 2068 of all students whose program is BCT
+
+```sql
+UPDATE student
+SET batch = 2068
+WHERE program = 'BCT' AND batch = 2066;
+```
+
+- Update the batch of all the student from 2066 to 2068, 2067 to 2069 and rest batch as it is of all student
+
+```sql
+UPDATE student
+SET batch = batch + 2
+WHERE batch = 2066 OR batch = 2067;
+```
+
+## Past Questions:
+
+Consider the following relational database model:
+Hotel (Hotel_No, Name, Address)
+Room (Room_No, Hotel_No, Type, Price)
+Booking (Hotel_No, Guest_No, Date_From, Date_To, Room_No)
+Guest (Guest_No, Name, Address)
+
+Write SQL statement for the following.
+
+a. List all the guests who have booked rooms at the Everest Hotel.
+```sql
+SELECT Name FROM Guest
+WHERE Guest_No IN (
+    SELECT Guest_No FROM Booking
+    JOIN Hotel ON Booking.Hotel_No = Hotel.Hotel_No
+    WHERE Hotel.Name = 'Everest Hotel'
+)
+```
+b. Create a view to expose only the hotel_No, Guest_No, Room_No, and price of all booked rooms.
+```sql
+CREATE VIEW view1 AS
+SELECT Booking.Hotel_No, Booking.Guest_No, Booking.Room_No, Room.Price FROM Booking
+JOIN Room ON Booking.Room_No = Room.Room_No AND Booking.Hotel_No = Room.Hotel_No;
+```
+c. Find the total cost of the deluxe rooms at Everest hotel after offering a 5% discount.
+```sql
+SELECT SUM(Price)*0.95 FROM Room
+JOIN Hotel ON Room.Hotel_No = Hotel.Hotel_No
+WHERE Hotel.Name = 'Everest Hotel';
+```
+
+d. Identify the hotel name which has the highest total guests.
+
+```sql
+SELECT Name FROM Hotel
+WHERE Hotel_No = (
+    SELECT COUNT(Guest_No) FROM Booking
+    GROUP BY Hotel_No;
+)
+```
