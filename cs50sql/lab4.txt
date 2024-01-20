@@ -1,0 +1,27 @@
+create table student(
+crn varchar(20) primary key,
+name varchar(20),
+addr varchar(20),
+phone_no int,
+dob varchar(20)
+);
+
+create table course(
+id varchar(20) primary key,
+cname varchar(20),
+duration int,
+fee int);
+insert into student(crn,name,addr,phone_no,dob) values('058/bct766','Binod','Lalitpur',null,'12-jan-1992');
+insert into student(crn,name,addr,phone_no,dob) values('058/bct778','Shyam','ktm',4288888,'1-dec-1990');
+insert into student(crn,name,addr,phone_no,dob) values('058/bct766','Binod','Lalitpur',null,'12-jan-1992');
+insert into course (id,cname,duration,fee) values ('c123','java',5,3000);
+
+create table enroll (
+enroll_id varchar(10) primary key,
+crn varchar(20),
+id varchar(20),
+enroll_dt date,
+complete_dt date,
+foreign key (crn) references student(crn),
+foreign key (id) references course(id) );
+insert into enroll(enroll_id,crn,id,enroll_dt,complete_dt) values ('e12','058/bct766'.c111, '23-jan-2003',null);

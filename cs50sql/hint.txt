@@ -1,0 +1,5 @@
+sqlite database_name.db
+.mode column
+.header on
+
+.exit for exit
