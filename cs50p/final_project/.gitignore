@@ -1,0 +1,6 @@
+Cs50p _final_project_demo.webm
+description.txt
+testenv
+.pytest_cache
+.ipynb_checkpoints
+__pycache__
